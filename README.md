@@ -45,7 +45,10 @@ mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
 The program copies `entry.png` to `/output/entry.png` and reads it back
 to confirm every byte matches, so both grader runs produce identical
-output. No network, no randomness.
+output. Before copying it also validates the bundled file is a whole
+image — PNG or JPEG by its first bytes, dimensions within 1024x1024,
+and a JPEG running through to its end marker — and verifies the copy a
+second time by SHA-256. No network, no randomness.
 
 ## Sources
 
